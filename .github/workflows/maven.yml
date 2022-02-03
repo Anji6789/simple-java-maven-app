@@ -40,11 +40,17 @@ jobs:
 #       with:
 #           name: Test Report
 #           path: ./*.xml
-    - name: Publish package
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.4
+      with:
+          # Artifact name
+        name: artifact 
+        path: ${{ github.workspace }}/
+   # - name: Publish package
       #run: mvn deploy -e -Durl="https://${{secrets.USERNAME}}:{{secrets.GIT_PAT}}@maven.pkg.github.com/Anji6789/${{ env.PROJECT-NAME }}" -Dfile=/home/runner/.m2/repository/com/mycompany/app/my-app/1.0-SNAPSHOT/my-app-1.0-SNAPSHOT.jar -Dtoken=GITHUB_TOKEN -DgroupId=com.mycompany.app -DartifcatId=my-app -Dversion=1.0-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
-      run:  mvn deploy -Dregistry=https://maven.pkg.github.com/phanatic -Dtoken=$GH_TOKEN -s $GITHUB_WORKSPACE/settings.xml -Dmaven.groupId=junit -Dmaven.artifactId=junit -Dmaven.version=4.8.2 --strict-checksums
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+   #   run:  mvn deploy -Dregistry=https://maven.pkg.github.com/phanatic -Dtoken=$GH_TOKEN -s $GITHUB_WORKSPACE/settings.xml -Dmaven.groupId=junit -Dmaven.artifactId=junit -Dmaven.version=4.8.2 --strict-checksums
+   #   env:
+   #     GITHUB_TOKEN: ${{ github.token }}
 #     - name: list
 #       run: | 
 #           cd ${{ github.workspace }}
