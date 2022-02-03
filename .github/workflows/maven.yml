@@ -31,7 +31,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      #run: mvn clean install --file pom.xml -Dmaven.groupId=junit -Dmaven.artifactId=junit -Dmaven.version=4.8.2
+      #run: mvn clean install --file pom.xml -Dmaven.groupId=com.mycompany.app -Dmaven.artifactId=my-app -Dmaven.version=1.0-SNAPSHOT
       run: mvn clean install -s $GITHUB_WORKSPACE/settings.xml --file pom.xml -Dmaven.groupId=junit -Dmaven.artifactId=junit -Dmaven.version=4.8.2 
       #run: mvn -B package --file pom.xml
 #     - name: 'Publish Test results'
