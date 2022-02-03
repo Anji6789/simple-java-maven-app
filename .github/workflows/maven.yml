@@ -22,6 +22,7 @@ jobs:
       with:
         ref: ${{ github.REF }}
         fetch-depth: 0
+        server-id: github
         settings-path: ${{ github.workspace }} 
     - uses: actions/checkout@v2
     - name: Set up JDK 11
