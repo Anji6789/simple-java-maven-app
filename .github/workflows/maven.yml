@@ -38,10 +38,10 @@ jobs:
       with:
           name: Test Report
           path: ./*.xml
-#     - name: Publish package
-#       run:  mvn deploy -Dregistry=https://maven.pkg.github.com/phanatic -Dtoken=$GH_TOKEN -s $GITHUB_WORKSPACE/settings.xml -Dmaven.groupId=junit -Dmaven.artifactId=junit -Dmaven.version=4.8.2 --strict-checksums
-#       env:
-#         GITHUB_TOKEN: ${{ github.token }}
+    - name: Publish package
+      run:  mvn deploy -Dregistry=https://maven.pkg.github.com/phanatic -Dtoken=$GH_TOKEN -s $GITHUB_WORKSPACE/settings.xml -Dmaven.groupId=junit -Dmaven.artifactId=junit -Dmaven.version=4.8.2 --strict-checksums
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
     - name: list
       run: | 
           cd ${{ github.workspace }}
