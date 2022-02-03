@@ -33,9 +33,20 @@ jobs:
     - name: Build with Maven
       run: mvn clean install --file pom.xml -Dmaven.groupId=junit -Dmaven.artifactId=junit -Dmaven.version=4.8.2 
       #run: mvn -B package --file pom.xml
-    - name: Publish package
-      run:  mvn deploy -Dregistry=https://maven.pkg.github.com/phanatic -Dtoken=$GH_TOKEN -s -Dmaven.groupId=junit -Dmaven.artifactId=junit -Dmaven.version=4.8.2 --strict-checksums
-      #run:  mvn deploy -Dregistry=https://maven.pkg.github.com/phanatic -Dtoken=$GH_TOKEN -s $GITHUB_WORKSPACE/settings.xml -Dmaven.groupId=junit -Dmaven.artifactId=junit -Dmaven.version=4.8.2 --strict-checksums
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-
+    - name: 'Publish Test results'
+      uses: actions/upload-artifact@v2.2.3
+      with:
+          name: Test Report
+          path: ./*.xml
+#     - name: Publish package
+#       run:  mvn deploy -Dregistry=https://maven.pkg.github.com/phanatic -Dtoken=$GH_TOKEN -s $GITHUB_WORKSPACE/settings.xml -Dmaven.groupId=junit -Dmaven.artifactId=junit -Dmaven.version=4.8.2 --strict-checksums
+#       env:
+#         GITHUB_TOKEN: ${{ github.token }}
+    - name: list
+      run: | 
+          cd ${{ github.workspace }}
+          ls
+          pwd
+          whoami
+          ls -ltrR
+          
