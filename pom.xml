@@ -64,7 +64,7 @@
       <snapshotRepository>
           <id>nexus</id>
           <name>snapshots</name>
-          <url>http://maven.apache.org/nexus/content/repositories/snapshots</url>
+          <url>https://maven.pkg.github.com/Anji6789/simple-java-maven-app</url>
       </snapshotRepository>
   </distributionManagement>
 </project>
