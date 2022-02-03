@@ -34,21 +34,21 @@ jobs:
       #run: mvn clean install --file pom.xml -Dmaven.groupId=junit -Dmaven.artifactId=junit -Dmaven.version=4.8.2
       run: mvn clean install -s $GITHUB_WORKSPACE/settings.xml --file pom.xml -Dmaven.groupId=junit -Dmaven.artifactId=junit -Dmaven.version=4.8.2 
       #run: mvn -B package --file pom.xml
-    - name: 'Publish Test results'
-      uses: actions/upload-artifact@v2.2.3
-      with:
-          name: Test Report
-          path: ./*.xml
+#     - name: 'Publish Test results'
+#       uses: actions/upload-artifact@v2.2.3
+#       with:
+#           name: Test Report
+#           path: ./*.xml
     - name: Publish package
-      run: mvn deploy:deploy-file -e -Durl="https://${{secrets.USERNAME}}:{{secrets.GITPAT}}@maven.pkg.github.com/Anji6789/${{ env.PROJECT-NAME }}" -Dfile=/home/runner/.m2/repository/com/mycompany/app/my-app/1.0-SNAPSHOT/my-app-1.0-SNAPSHOT.jar -Dtoken=GITHUB_TOKEN -DgroupId=com.mycompany.app -DartifcatId=${{ env.PROJECT-NAME }} -Dversion=${{ env.VERSION }} -Dpackaging=jar -DgeneratePom=true
+      run: mvn deploy:deploy-file -e -Durl="https://${{secrets.USERNAME}}:{{secrets.GITPAT}}@maven.pkg.github.com/Anji6789/${{ env.PROJECT-NAME }}" -Dfile=/home/runner/.m2/repository/com/mycompany/app/my-app/1.0-SNAPSHOT/my-app-1.0-SNAPSHOT.jar -Dtoken=GITHUB_TOKEN -DgroupId=com.mycompany.app -DartifcatId=myapp -Dversion=1.0-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
       #run:  mvn deploy -Dregistry=https://maven.pkg.github.com/phanatic -Dtoken=$GH_TOKEN -s $GITHUB_WORKSPACE/settings.xml -Dmaven.groupId=junit -Dmaven.artifactId=junit -Dmaven.version=4.8.2 --strict-checksums
       env:
         GITHUB_TOKEN: ${{ github.token }}
-    - name: list
-      run: | 
-          cd ${{ github.workspace }}
-          ls
-          pwd
-          whoami
-          ls -ltrR
+#     - name: list
+#       run: | 
+#           cd ${{ github.workspace }}
+#           ls
+#           pwd
+#           whoami
+#           ls -ltrR
           
